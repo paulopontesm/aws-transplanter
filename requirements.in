@@ -1,0 +1,13 @@
+boto3==1.23.4
+boto3-stubs[organizations]==1.23.0
+botocore==1.26.10
+mypy-boto3-organizations==1.23.0.post1
+pyyaml==6.0
+
+# types
+types-pyyaml==6.0.7
+types-requests==2.27.30
+types-setuptools==57.4.17
+types-toml==0.10.7
+types-urllib3==1.26.15
+typing-extensions==4.2.0
