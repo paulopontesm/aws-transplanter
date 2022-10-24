@@ -1,0 +1,37 @@
+name: "Publish"
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: "published"
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref }} # checkout the correct branch name
+          fetch-depth: 0 # fetch the whole repo history
+
+      - name: Git Version
+        uses: codacy/git-version@2.5.4
+        id: gitversion
+
+      - name: Git tag/Release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ steps.gitversion.outputs.version }}
+
+      - name: "Create dist/"
+        run: |
+          echo ${{ steps.gitversion.outputs.version }} >> .version
+          python setup.py sdist
+
+      - name: Publish a Python distribution to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          password: ${{ secrets.PYPI_API_TOKEN }}
