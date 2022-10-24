@@ -87,3 +87,11 @@ repos:
         name: pip-compile requirements.txt
         args: [requirements.txt]
         files: ^requirements\.(in|txt)$
+  - repo: local
+    hooks:
+      - id: pytest-check
+        name: pytest-check
+        entry: pytest
+        language: system
+        pass_filenames: false
+        always_run: true
