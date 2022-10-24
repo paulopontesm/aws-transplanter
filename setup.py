@@ -16,6 +16,7 @@ setup(
     description="Explore AWS Organization structure",
     author="pmartins.dev",
     long_description=long_description,
+    long_description_content_type="text/markdown",
     author_email="paulo@pmartins.dev",
     scripts=["bin/aws_transplanter"],
     url="https://github.com/paulopontesm/aws_transplanter",
@@ -32,6 +33,6 @@ setup(
     ],
     python_requires=">=3.7",
     keywords="aws security Amazon",
-    packages=find_packages(exclude=["test"]),
+    packages=find_packages(exclude=["test", "venv"]),
     install_requires=requirements,
 )

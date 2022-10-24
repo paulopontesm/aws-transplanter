@@ -26,9 +26,10 @@ jobs:
         with:
           tag: ${{ steps.gitversion.outputs.version }}
 
-      - name: "Write version to .version file"
+      - name: "Create dist/"
         run: |
           echo ${{ steps.gitversion.outputs.version }} >> .version
+          python setup.py sdist
 
       - name: Publish a Python distribution to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
