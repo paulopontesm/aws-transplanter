@@ -20,6 +20,8 @@ jobs:
       - name: Git Version
         uses: codacy/git-version@2.5.4
         id: gitversion
+        with:
+          release-branch: main
 
       - name: Git tag/Release
         uses: ncipollo/release-action@v1
